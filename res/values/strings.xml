@@ -2,7 +2,5 @@
 <resources>
 
     <string name="app_name">日程贴士</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+	<string name="empty_view_message">目前没有代办事项，点击导航+进行添加吧！</string>
 </resources>
