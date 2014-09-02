@@ -7,4 +7,5 @@
 	<string name="save_note">保存</string>
 	<string name="solved">已完成？</string>
 	<string name="title_hint">事项标题</string>
+	<string name="delete_note">删除</string>
 </resources>
