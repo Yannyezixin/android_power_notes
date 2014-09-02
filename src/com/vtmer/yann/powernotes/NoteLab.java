@@ -20,6 +20,10 @@ public class NoteLab {
 		mNotes.add(n);
 	}
 	
+	public void deleteNote(Note n) {
+		mNotes.remove(n);
+	}
+	
 	// 单例
 	public static NoteLab get(Context c) {
 		if (sNoteLab == null) {
