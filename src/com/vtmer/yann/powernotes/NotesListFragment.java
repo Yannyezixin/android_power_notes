@@ -67,7 +67,7 @@ public class NotesListFragment extends ListFragment {
 		} else {
 			//使用上下文操作栏菜单
 			//多选模式
-			lv.setChoiceMode(lv.CHOICE_MODE_MULTIPLE_MODAL);
+			lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 			lv.setMultiChoiceModeListener(new MultiChoiceModeListener() {
 				@Override
 				public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -90,6 +90,8 @@ public class NotesListFragment extends ListFragment {
 								}
 							}
 							mode.finish();
+							//数据写入文件
+							noteLab.saveNotes();
 							adapter.notifyDataSetChanged();
 							return true;
 						default:
@@ -141,7 +143,10 @@ public class NotesListFragment extends ListFragment {
 		
 		switch (item.getItemId()) {
 			case R.id.menu_delete_list_note:
-				NoteLab.get(getActivity()).deleteNote(note);
+				NoteLab noteLab = NoteLab.get(getActivity());
+				noteLab.deleteNote(note);
+				//数据写入文件
+				noteLab.saveNotes();
 				adapter.notifyDataSetChanged();
 				return true;
 		}
@@ -188,7 +193,7 @@ public class NotesListFragment extends ListFragment {
 			if (convertView == null) {
 				convertView = getActivity().getLayoutInflater().inflate(R.layout.fragment_notes_list_item, null);
 			}
-			Log.d(TAG, "get the view of" + position);
+			//Log.d(TAG, "get the view of " + position);
 			Note n = getItem(position);
 			
 			TextView titleTextView = (TextView) convertView.findViewById(R.id.notes_list_title_textView);

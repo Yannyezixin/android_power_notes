@@ -88,6 +88,7 @@ public class NoteFragment extends Fragment{
 		mNote.setTitle(mNoteTitle.getText().toString());
 		mNote.setContent(mContent.getText().toString());
 		mNote.setSolved(mSolvedCheckBox.isChecked());
+		NoteLab.get(getActivity()).saveNotes();
 	}
 
 	@TargetApi(11)
@@ -98,9 +99,7 @@ public class NoteFragment extends Fragment{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			if (NavUtils.getParentActivityIntent(getActivity()) != null) {
 				getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-				Log.d(TAG, "返回上一个Activity");
 			}
-			Log.d(TAG, "返回上一个Activity");
 		}
 		
 		//初始化
