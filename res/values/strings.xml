@@ -3,4 +3,8 @@
 
     <string name="app_name">日程贴士</string>
 	<string name="empty_view_message">目前没有代办事项，点击导航+进行添加吧！</string>
+	<string name="new_note">新建</string>
+	<string name="save_note">保存</string>
+	<string name="solved">已完成？</string>
+	<string name="title_hint">事项标题</string>
 </resources>

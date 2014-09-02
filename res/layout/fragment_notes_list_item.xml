@@ -26,7 +26,9 @@
             <CheckBox
                 android:id="@+id/notes_list_solved_checkBox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:focusable="false" />
 
         </LinearLayout>
 
