@@ -1,5 +1,6 @@
 package com.vtmer.yann.powernotes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -56,6 +57,11 @@ public class Note {
 
 	public UUID getId() {
 		return mId;
+	}
+	
+	public String dateFormat(Date date) {
+		SimpleDateFormat f  = new SimpleDateFormat("yyyy-MM-dd  E kk:mm:ss");
+		return f.format(date);
 	}
 	
 }

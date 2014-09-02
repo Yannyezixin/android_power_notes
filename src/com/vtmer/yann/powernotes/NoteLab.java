@@ -1,6 +1,7 @@
 package com.vtmer.yann.powernotes;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import android.content.Context;
 
@@ -13,13 +14,10 @@ public class NoteLab {
 	private NoteLab(Context appContext) {
 		mAppContext = appContext;
 		mNotes = new ArrayList<Note>();
-		for (int i = 0; i < 50; i++) {
-			Note n = new Note();
-			n.setTitle("Note #" + i);
-			n.setContent("this is the content of Note #" + i);
-			n.setSolved(i % 3 == 0);
-			mNotes.add(n);
-		}
+	}
+	
+	public void addNote(Note n) {
+		mNotes.add(n);
 	}
 	
 	// 单例
@@ -32,5 +30,14 @@ public class NoteLab {
 	
 	public ArrayList<Note> getNotes() {
 		return mNotes;
+	}
+	
+	public Note getNote(UUID id) {
+		for (Note c : mNotes) {
+			if (c.getId().equals(id)) {
+				return c;
+			}
+		}
+		return null;
 	}
 }
