@@ -1,13 +1,16 @@
 package com.vtmer.yann.powernotes;
 
+import java.util.Date;
 import java.util.UUID;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +23,8 @@ import android.widget.TextView;
 
 public class NoteFragment extends Fragment{
 	private static final String TAG = "NoteFragment";
+	private static final String DIALOG_DATE = "date";
+	private static final int REQUEST_DATE = 0;
 	
 	public static final String EXTRA_NOTE_ID = "com.vtmer.noteFragment.note_id";
 	public static final String EXTRA_ADDNOTE = "com.vtmer.noteFragment.add_note";
@@ -29,7 +34,6 @@ public class NoteFragment extends Fragment{
 	private CheckBox mSolvedCheckBox;
 	private EditText mContent;
 	private EditText mNoteTitle;
-	
 	private boolean mAddNote;
 
 	public static NoteFragment newInstance(UUID noteId, boolean addNote) {
@@ -108,11 +112,36 @@ public class NoteFragment extends Fragment{
 		mSolvedCheckBox = (CheckBox) v.findViewById(R.id.solved_note);
 		mContent = (EditText) v.findViewById(R.id.content_note);
 		mNoteTitle = (EditText) v.findViewById(R.id.title_note);
-		mNoteDate.setText(mNote.dateFormat(mNote.getDate()));
+		
+		updateDate();
 		mSolvedCheckBox.setChecked(mNote.isSolved());
 		mContent.setText(mNote.getContent());
 		mNoteTitle.setText(mNote.getTitle());
 		
+		mNoteDate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragmentManager fm = getActivity().getSupportFragmentManager();
+				DatePickerFragment dialog = DatePickerFragment.newInstance(mNote.getDate());
+				dialog.setTargetFragment(NoteFragment.this, REQUEST_DATE);
+				dialog.show(fm, DIALOG_DATE);
+			}
+		});
+		
 		return v;
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode != Activity.RESULT_OK) return;
+		if (requestCode == REQUEST_DATE) {
+			Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+			mNote.setDate(date);
+			updateDate();
+		}
+	}
+
+	private void updateDate() {
+		mNoteDate.setText(mNote.dateFormat(mNote.getDate()));
 	}
 }

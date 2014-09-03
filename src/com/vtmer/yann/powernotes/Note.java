@@ -71,7 +71,7 @@ public class Note {
 	}
 	
 	public String dateFormat(Date date) {
-		SimpleDateFormat f  = new SimpleDateFormat("yyyy-MM-dd  E kk:mm:ss");
+		SimpleDateFormat f  = new SimpleDateFormat("yyyy-MM-dd  E kk:mm");
 		return f.format(date);
 	}
 	
