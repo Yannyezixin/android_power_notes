@@ -8,4 +8,8 @@
 	<string name="solved">已完成？</string>
 	<string name="title_hint">事项标题</string>
 	<string name="delete_note">删除</string>
+	
+	<string name="date_picker_title">时间设置</string>
+	<string name="date_picker_ok">确定</string>
+	<string name="date_picker_cancel">取消</string>
 </resources>
