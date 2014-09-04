@@ -2,12 +2,14 @@
 <resources>
 
     <string name="app_name">日程贴士</string>
-	<string name="empty_view_message">目前没有代办事项，点击导航+进行添加吧！</string>
+    <string name="app_splash_tip">为您规划每一天</string>
+	<string name="empty_view_message">无代办事项，点击导航进行添加吧！^_^</string>
 	<string name="new_note">新建</string>
 	<string name="save_note">保存</string>
 	<string name="solved">已完成？</string>
 	<string name="title_hint">事项标题</string>
 	<string name="delete_note">删除</string>
+	
 	
 	<string name="date_picker_title">时间设置</string>
 	<string name="date_picker_ok">确定</string>

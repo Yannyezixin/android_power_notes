@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="actionBarColor">#73C8D3</color>
+    <color name="actionBarText">#ffffff</color>
+    <color name="actionBarTextShadow">#000</color>
+    <color name="cut_off_line">#dddddd</color>
+    <color name="home_background">#eee</color>
+    <color name="note_title_background">#73C8D3</color>
+    
+    <color name="app_text_while">#fff</color>
+    <color name="app_text_hint_while">#eee</color>
+    <color name="app_text_light">#73C8D3</color>
+    <color name="app_text_main">#5a5a5a</color>
+</resources>

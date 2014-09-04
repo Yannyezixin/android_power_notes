@@ -1,50 +1,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff" >
+    android:layout_marginBottom="20dp"
+    android:background="#fff"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#eee"
-            android:padding="5dp" >
+            android:layout_height="wrap_content" >
 
             <TextView
                 android:id="@+id/date_note"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:drawableLeft="@drawable/alarm"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/app_text_light"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/note_title_background"
+            android:padding="5dp" >
+
+            <EditText
+                android:id="@+id/title_note"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="14sp" />
+                android:background="@drawable/title_edittext"
+                android:drawableLeft="@drawable/logo_small"
+                android:ems="10"
+                android:hint="@string/title_hint"
+                android:textColor="@color/app_text_while"
+                android:textColorHint="@color/app_text_hint_while" >
+
+                <requestFocus />
+            </EditText>
 
             <CheckBox
                 android:id="@+id/solved_note"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/solved" />
+                android:text="@string/solved"
+                android:textColor="@color/app_text_while" />
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/title_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/title_hint" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="#00bcd4" />
 
         <EditText
             android:id="@+id/content_note"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/content_edittext"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:scrollHorizontally="true" />
+            android:padding="10dp"
+            android:scrollHorizontally="true"
+            android:textColor="@color/app_text_main" />
 
     </LinearLayout>
+
 </LinearLayout>

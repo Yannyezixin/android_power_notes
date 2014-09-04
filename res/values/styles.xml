@@ -22,5 +22,21 @@
     	<item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
+    
+    <style name="Theme.PowerNote" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/MyActionBarStyle</item>
+    </style>
+    
+    <style name="MyActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@color/actionBarColor</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleStyle</item>
+    </style>
+    
+    <style name="MyActionBarTitleStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:textColor">@color/actionBarText</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:shadowRadius">3</item>
+        <item name="android:shadowColor">@color/actionBarTextShadow</item>
+    </style>
 
 </resources>
