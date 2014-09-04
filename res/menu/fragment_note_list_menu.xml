@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+        
     <item android:id="@+id/menu_new_item_menu"
         android:icon="@drawable/add"
         android:title="@string/new_note"
-        android:showAsAction="ifRoom|withText"/>
-
+        android:showAsAction="always"/>
+    
+    
+    <item android:id="@+id/overflow_menu"
+        android:icon="@drawable/overflow"
+        android:title="@string/more"
+        android:showAsAction="always">
+        <menu>
+            <item android:id="@+id/menu_sort_item"
+                android:title="@string/sort"
+                android:icon="@drawable/sort"
+                android:showAsAction="never"
+                />
+            <item android:id="@+id/menu_setting_item"
+		        android:icon="@drawable/setting"
+		        android:title="@string/setting"
+		        android:showAsAction="never"/>
+        </menu>
+    </item>
+    
+    
 </menu>

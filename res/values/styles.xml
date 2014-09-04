@@ -25,6 +25,7 @@
     
     <style name="Theme.PowerNote" parent="@style/Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/MyActionBarStyle</item>
+        <item name="android:popupMenuStyle">@style/MyPopupMenu</item>
     </style>
     
     <style name="MyActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -37,6 +38,11 @@
         <item name="android:textSize">22sp</item>
         <item name="android:shadowRadius">3</item>
         <item name="android:shadowColor">@color/actionBarTextShadow</item>
+    </style>
+    
+    <style name="MyPopupMenu"  parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:popupBackground">@color/popupBackground</item>
+        <item name="android:textColor">@color/app_text_while</item>
     </style>
 
 </resources>

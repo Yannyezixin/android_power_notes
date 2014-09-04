@@ -6,6 +6,8 @@
     <color name="cut_off_line">#dddddd</color>
     <color name="home_background">#eee</color>
     <color name="note_title_background">#73C8D3</color>
+    <color name="note_title_no_background">#fff</color>
+    <color name="popupBackground">#73C8D3</color>
     
     <color name="app_text_while">#fff</color>
     <color name="app_text_hint_while">#eee</color>
