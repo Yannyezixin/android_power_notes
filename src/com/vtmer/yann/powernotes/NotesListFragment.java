@@ -3,9 +3,11 @@ package com.vtmer.yann.powernotes;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.ActionMode;
@@ -28,6 +30,8 @@ public class NotesListFragment extends ListFragment {
 	
 	private static final String TAG = "NotesListFragment";
 	private static final int SUBLENGTH = 60;
+	private static final String DIALOG_SORT = "sort";
+	private static final int REQUEST_SORT = 0;
 
 	private ListView lv;
 	private ArrayList<Note> mNotes;
@@ -55,6 +59,8 @@ public class NotesListFragment extends ListFragment {
 		
 		//设置空视图
 		lv.setEmptyView(v.findViewById(android.R.id.empty));
+		
+		Log.d(TAG, "视图刷新");
 		
 		return v;
 	}
@@ -119,7 +125,8 @@ public class NotesListFragment extends ListFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		((NoteAdapter) getListAdapter()).notifyDataSetInvalidated();
+		((NoteAdapter) getListAdapter()).notifyDataSetChanged();
+		Log.d(TAG, "没有刷新?");
 	}
 	
 	@Override
@@ -162,6 +169,12 @@ public class NotesListFragment extends ListFragment {
 				i.putExtra(NoteFragment.EXTRA_ADDNOTE, true);
 				startActivityForResult(i, 0);
 				return true;
+			case R.id.menu_sort_item:
+				FragmentManager fm = getActivity().getSupportFragmentManager();
+				SortDialogFragment dialog = new SortDialogFragment();
+				dialog.setTargetFragment(NotesListFragment.this, REQUEST_SORT);
+				dialog.show(fm, DIALOG_SORT);
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -194,7 +207,7 @@ public class NotesListFragment extends ListFragment {
 			if (convertView == null) {
 				convertView = getActivity().getLayoutInflater().inflate(R.layout.fragment_notes_list_item, null);
 			}
-			//Log.d(TAG, "get the view of " + position);
+			Log.d(TAG, "get the view of " + position);
 			Note n = getItem(position);
 			
 			TextView titleTextView = (TextView) convertView.findViewById(R.id.notes_list_title_textView);
@@ -207,13 +220,19 @@ public class NotesListFragment extends ListFragment {
 					 
 			if (n.getContent().length() == 0 ) {
 				contentTextView.setVisibility(View.GONE);
+				Log.d(TAG, "内容");
 			} else {
+				contentTextView.setVisibility(View.VISIBLE);
 				contentTextView.setText(subStr(n.getContent()));
 			}
 			
 			if (n.isSolved()) {
+				Log.d(TAG, "改变标题背景颜色");
 				dateTextView.setBackgroundResource(R.color.note_title_background);
 				dateTextView.setTextColor(getResources().getColor(R.color.app_text_while));
+			} else {
+				dateTextView.setBackgroundResource(R.color.note_title_no_background);
+				dateTextView.setTextColor(getResources().getColor(R.color.app_text_light));
 			}
 				
 			return convertView;
@@ -230,5 +249,7 @@ public class NotesListFragment extends ListFragment {
 		
 		return string;
 	}
+	
+	
 
 }

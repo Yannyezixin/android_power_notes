@@ -1,6 +1,9 @@
 package com.vtmer.yann.powernotes;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.UUID;
 
@@ -85,4 +88,37 @@ public class Note {
 		
 		return json;
 	}
+
+	public static Comparator<Note> NoteDateComparator = new Comparator<Note> () {
+		
+		public int compare(Note n1, Note n2) {
+			Date NoteDate1 =  n1.getDate();
+			Date NoteDate2 =  n2.getDate();
+			
+			return NoteDate1.compareTo(NoteDate2);
+		}
+	};
+	
+	public static Comparator<Note> NoteTitleComparator = new Comparator<Note> () {
+		
+		public int compare(Note n1, Note n2) {
+			String NoteTitle1 =  n1.getTitle().toUpperCase();
+			String NoteTitle2 =  n2.getTitle().toUpperCase();
+			
+			return NoteTitle1.compareTo(NoteTitle2);
+		}
+	};
+	
+	public static Comparator<Note> NoteSolvedComparator = new Comparator<Note> () {
+		
+		@TargetApi(Build.VERSION_CODES.KITKAT)
+		public int compare(Note n1, Note n2) {
+			boolean NoteSolved1 =  n1.isSolved();
+			boolean NoteSolved2 =  n2.isSolved();
+			
+			
+			return Boolean.compare(NoteSolved1, NoteSolved2);
+		}
+	};
+	
 }
