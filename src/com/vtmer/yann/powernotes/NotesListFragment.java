@@ -27,6 +27,7 @@ import android.widget.TextView;
 public class NotesListFragment extends ListFragment {
 	
 	private static final String TAG = "NotesListFragment";
+	private static final int SUBLENGTH = 60;
 
 	private ListView lv;
 	private ArrayList<Note> mNotes;
@@ -202,8 +203,32 @@ public class NotesListFragment extends ListFragment {
 			 		  dateTextView.setText(n.dateFormat(n.getDate()));
 			CheckBox solvedCheckBox = (CheckBox) convertView.findViewById(R.id.notes_list_solved_checkBox);
 		     		  solvedCheckBox.setChecked(n.isSolved());
+			TextView contentTextView = (TextView) convertView.findViewById(R.id.notes_list_content_textView);
+					 
+			if (n.getContent().length() == 0 ) {
+				contentTextView.setVisibility(View.GONE);
+			} else {
+				contentTextView.setText(subStr(n.getContent()));
+			}
 			
+			if (n.isSolved()) {
+				dateTextView.setBackgroundResource(R.color.note_title_background);
+				dateTextView.setTextColor(getResources().getColor(R.color.app_text_while));
+			}
+				
 			return convertView;
 		}	
 	}
+	
+	public String subStr(String string) {
+		
+		if (string.length() < SUBLENGTH) {
+			string = string.substring(0, string.length());
+		} else {
+			string = string.substring(0, SUBLENGTH) + "...";
+		}
+		
+		return string;
+	}
+
 }
